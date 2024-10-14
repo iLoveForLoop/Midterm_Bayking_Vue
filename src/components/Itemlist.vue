@@ -38,9 +38,9 @@ const handleDelete = data => {
   <Editpage @toggle-edit="handleToggle" @edit-data="handleEdit" v-if="isShow" />
 
   <Productitem
-    v-for="(task, index) in productList"
+    v-for="(product, index) in productList"
     :key="index"
-    :task="task"
+    :product="product"
     :index="index"
     @delete-data="handleDelete"
     @toggle-update="handleToggle"

@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const props = defineProps({
-  task: {},
+  product: {},
   index: {},
 })
 
@@ -22,7 +22,9 @@ const handleEditToggle = () => {
 <template>
   <div class="task">
     <div class="text-div">
-      <p>{{ task }}</p>
+      <p>Name:{{ product.name }}</p>
+      <br />
+      <p>Price: {{ product.price }}</p>
     </div>
 
     <div class="btns">
