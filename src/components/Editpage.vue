@@ -3,12 +3,19 @@ import { ref } from 'vue'
 
 const emit = defineEmits(['edit-data', 'toggle-edit'])
 
-let editedTask = ref('')
+const props = defineProps({
+  list: {},
+  index: {},
+})
+
+let editedName = ref(props.list[props.index].name)
+let editedprice = ref(props.list[props.index].price)
 
 const handleSubmit = () => {
-  console.log('edit done')
-  emit('edit-data', editedTask.value)
-  editedTask.value = ''
+  const tmp = { name: editedName.value, price: editedprice.value }
+  emit('edit-data', tmp)
+  editedName.value = ''
+  editedprice.value = ''
 }
 
 const toggleEdit = () => {
@@ -20,10 +27,16 @@ const toggleEdit = () => {
   <div class="backdrop" @click.self="toggleEdit">
     <div class="edit">
       <form @submit.prevent="handleSubmit">
-        <h1>Edit Task</h1>
+        <h1>Edit Product</h1>
         <input
           type="text"
-          v-model="editedTask"
+          v-model="editedName"
+          placeholder="Edit Product"
+          @keydown.enter="handleSubmit"
+        />
+        <input
+          type="number"
+          v-model="editedprice"
           placeholder="Edit Product"
           @keydown.enter="handleSubmit"
         />

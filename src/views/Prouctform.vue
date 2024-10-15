@@ -1,10 +1,10 @@
 <script setup>
-import Itemlist from '@/components/Itemlist.vue'
+import Productlist from '@/components/Productlist.vue'
 import { ref } from 'vue'
 
 let productText = ref('')
 let productPrice = ref('')
-const productList = ref([{ name: 'water', price: 100 }])
+const productList = ref([])
 
 const handleSubmit = () => {
   if (productText.value.trim() !== '') {
@@ -15,21 +15,14 @@ const handleSubmit = () => {
   }
 }
 
-// const handleSubmit = (data) => {
-//   productList.value = data
-//   if (productText.value.trim() !== '') {
-//     productList.value.push(productText.value)
-//     productText.value = ''
-//   }
-// }
-
 const handleDelete = data => {
   console.log('received')
   productList.value.splice(data, 1)
 }
 
-const handleEdit = ({ index, newTask }) => {
-  productList.value[index] = newTask
+const handleEdit = ({ index, newProduct }) => {
+  productList.value[index].name = newProduct.name
+  productList.value[index].price = newProduct.price
 }
 </script>
 
@@ -52,7 +45,7 @@ const handleEdit = ({ index, newTask }) => {
       <button type="submit">Add</button>
     </form>
     <div class="m-auto">
-      <Itemlist
+      <Productlist
         :productList="productList"
         @edit-data="handleEdit"
         @delete-data="handleDelete"

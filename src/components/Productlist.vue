@@ -16,7 +16,7 @@ let isShow = ref(false)
 const handleEdit = newProduct => {
   console.log(newProduct)
   console.log(currentIndex)
-  if (newProduct.trim() !== '') {
+  if (newProduct.name.trim() !== '') {
     console.log('tried to edit')
     emit('edit-data', { index: currentIndex.value, newProduct: newProduct })
     isShow.value = false
@@ -27,6 +27,7 @@ const handleEdit = newProduct => {
 const handleToggle = ({ isEdit, index }) => {
   isShow.value = isEdit
   currentIndex.value = index
+  console.log('Current Index in the productlist', currentIndex.value)
 }
 
 const handleDelete = data => {
@@ -35,7 +36,13 @@ const handleDelete = data => {
 </script>
 
 <template>
-  <Editpage @toggle-edit="handleToggle" @edit-data="handleEdit" v-if="isShow" />
+  <Editpage
+    @toggle-edit="handleToggle"
+    @edit-data="handleEdit"
+    v-if="isShow"
+    :index="currentIndex"
+    :list="productList"
+  />
 
   <Productitem
     v-for="(product, index) in productList"
