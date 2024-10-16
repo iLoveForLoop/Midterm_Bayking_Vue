@@ -61,7 +61,7 @@ h1 {
 
 input {
   margin: 10px 10px;
-  padding: 10px 15px;
+  padding: 10px 9px;
   font-size: 18px;
 }
 
