@@ -27,49 +27,46 @@ const handleEdit = ({ index, newProduct }) => {
 </script>
 
 <template>
-  <div class="container text-center pt-5">
-    <h1>Product List</h1>
-    <form @submit.prevent="handleSubmit">
-      <input
-        type="text"
-        v-model="productText"
-        placeholder="Enter Product name"
-        @keydown.enter="handleSubmit"
-      />
-      <input
-        type="number"
-        v-model="productPrice"
-        placeholder="Enter Product price"
-        @keydown.enter="handleSubmit"
-      />
-      <button type="submit">Add</button>
-    </form>
-    <div class="m-auto">
-      <Productlist
-        :productList="productList"
-        @edit-data="handleEdit"
-        @delete-data="handleDelete"
-      />
+  <div class="container text-center pt-5 poppins-regular">
+    <div class="row">
+      <div class="col-6 px-5">
+        <h1>Add Product</h1>
+        <form @submit.prevent="handleSubmit">
+          <input
+            class="form-control my-5 p-3"
+            type="text"
+            v-model="productText"
+            placeholder="Enter Product name"
+            @keydown.enter="handleSubmit"
+          />
+          <input
+            class="form-control mb-5 p-3"
+            type="number"
+            v-model="productPrice"
+            placeholder="Enter Product price"
+            @keydown.enter="handleSubmit"
+          />
+          <button class="btn btn-dark px-5 py-3 text-end" type="submit">
+            Add <i class="bi bi-cart-plus"></i>
+          </button>
+        </form>
+      </div>
+      <div class="col-6 px-5">
+        <h1 class="mb-5">Your Products</h1>
+        <Productlist
+          :productList="productList"
+          @edit-data="handleEdit"
+          @delete-data="handleDelete"
+        />
+      </div>
     </div>
+
+    <div></div>
   </div>
 </template>
 
 <style scoped>
 h1 {
   margin: 0;
-}
-
-input {
-  margin: 10px 10px;
-  padding: 10px 9px;
-  font-size: 18px;
-}
-
-button {
-  padding: 5px 20px;
-}
-
-form {
-  padding: 10px;
 }
 </style>

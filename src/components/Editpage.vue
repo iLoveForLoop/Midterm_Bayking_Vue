@@ -25,22 +25,32 @@ const toggleEdit = () => {
 
 <template>
   <div class="backdrop" @click.self="toggleEdit">
-    <div class="edit">
+    <div class="edit rounded p-5">
       <form @submit.prevent="handleSubmit">
         <h1>Edit Product</h1>
-        <input
-          type="text"
-          v-model="editedName"
-          placeholder="Edit Product"
-          @keydown.enter="handleSubmit"
-        />
-        <input
-          type="number"
-          v-model="editedprice"
-          placeholder="Edit Product"
-          @keydown.enter="handleSubmit"
-        />
-        <button type="submit">Edit</button>
+        <div class="text-start mb-3">
+          <label class="form-label">Product Name</label>
+          <input
+            class="form-control p-3"
+            type="text"
+            v-model="editedName"
+            placeholder="Edit Product"
+            @keydown.enter="handleSubmit"
+          />
+        </div>
+
+        <div class="text-start mb-3">
+          <label class="form-label text-start">Product Price</label>
+          <input
+            class="form-control p-3"
+            type="number"
+            v-model="editedprice"
+            placeholder="Edit Product"
+            @keydown.enter="handleSubmit"
+          />
+        </div>
+
+        <button class="btn btn-dark px-5 py-2" type="submit">Save</button>
       </form>
     </div>
   </div>
@@ -59,20 +69,10 @@ const toggleEdit = () => {
 
 .edit {
   width: 50%;
-  height: 50vh;
+  height: 60vh;
   background: aliceblue;
   margin: auto;
   text-align: center;
   align-content: center;
-}
-
-input {
-  padding: 10px 25px;
-  font-size: 15px;
-}
-
-button {
-  padding: 10px 25px;
-  margin-left: 20px;
 }
 </style>

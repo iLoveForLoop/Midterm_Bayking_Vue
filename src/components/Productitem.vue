@@ -20,50 +20,19 @@ const handleEditToggle = () => {
 </script>
 
 <template>
-  <div class="task">
-    <div class="text-div">
-      <p>Name:{{ product.name }}</p>
-      <br />
-      <p>Price: {{ product.price }}</p>
-    </div>
+  <div
+    class="d-flex mt-2 justify-content-between align-items-center bg-body-secondary p-3 rounded"
+  >
+    <p class="m-0">Name: {{ product.name }}</p>
+    <p class="m-0">Price: {{ product.price }}</p>
 
-    <div class="btns">
-      <div class="btn-div">
-        <button @click="handleEditToggle">Edit</button>
-      </div>
+    <div class="d-flex gap-3">
+      <button class="btn btn-dark" @click="handleEditToggle">Edit</button>
 
-      <div class="btn-div">
-        <button @click="handleDelete">Delete</button>
-      </div>
+      <button class="btn btn-dark" @click="handleDelete">Delete</button>
     </div>
   </div>
 </template>
 
 <style scoped>
-.task {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  background-color: aliceblue;
-  width: 50%;
-}
-
-p {
-  display: inline-block;
-}
-
-button {
-  padding: 5px 20px;
-}
-
-.btn-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btns {
-  display: flex;
-  gap: 1em;
-}
 </style>
